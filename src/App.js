@@ -17,7 +17,7 @@ const options = {
   params: {info: 'mini_info', limit: '10', page: '1', titleType: 'movie'},
   headers: {
     'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com',
-    'X-RapidAPI-Key': '6cca1a9e39msh4fa0b3de26ef260p197e9cjsn6ef46d846997'
+    'X-RapidAPI-Key': process.env.API_KEY
   }
 };
 
