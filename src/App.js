@@ -1,37 +1,25 @@
 import React from "react";
-import axios from "axios";
 import { useState, useEffect } from "react";
 import "./App.css"
 import SearchIcon from "./search.svg";
 import MovieCard from "./MovieCard";
 
+const API_URL = "http://www.omdbapi.com?apikey=d322af96";
+
 const App = () => {
 const [searchTerm, setSearchTerm] = useState('');
 const [movies, setMovies] = useState([]);
 
-const searchMovies = async (title) => {
-
-const options = {
-  method: 'GET',
-  url: `https://moviesdatabase.p.rapidapi.com/titles/search/title/${title}`,
-  params: {info: 'mini_info', limit: '10', page: '1', titleType: 'movie'},
-  headers: {
-    'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com',
-    'X-RapidAPI-Key': process.env.API_KEY
-  }
-};
-
-await axios.request(options).then(function (response) {
-	setMovies(response.data.results);
-}).catch(function (error) {
-	console.error(error);
-});
-
-}
-
 useEffect(() => {
-searchMovies(searchTerm);
-}, [searchTerm]);
+    searchMovies("Batman");
+  }, []);
+
+  const searchMovies = async (title) => {
+    const response = await fetch(`${API_URL}&s=${title}`);
+    const data = await response.json();
+
+    setMovies(data.Search);
+  };
 
 return(
 	<div className="app">
@@ -48,7 +36,7 @@ return(
 
 	{ movies?.length > 0 ? (
 	<div className="container">
-	{ movies.map(movie => <MovieCard movie={movie} key={movie.id} />) }
+	{ movies.map((movie, index) => <MovieCard movie={movie} key={index} />) }
 	</div>
 	) : (
 	<div className="empty">

@@ -1,20 +1,20 @@
 import React from "react";
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie: { imdbID, Year, Poster, Title, Type } }) => {
 
 return(
-	<div className="movie">
+	<div className="movie" key={imdbID}>
 	<div>
-		{ movie.releaseYear != null ? <p>{movie.releaseYear.year}</p> : <p>Year N/A</p> }
+		{ Year != null ? <p>{Year}</p> : <p>Year N/A</p> }
 	</div>
 
 	<div>
-		<img src={movie.primaryImage != null ? movie.primaryImage.url : "https://via.placeholder.com/400"} alt={movie.titleText.text} />
+        <img src={Poster !== "N/A" ? Poster : "https://via.placeholder.com/400"} alt={Title} />
 	</div>
 
 	<div>
-		<span>{movie.titleType.text}</span>
-		<h3>{movie.titleText.text}</h3>
+        <span>{Type}</span>
+        <h3>{Title}</h3>
 	</div>
 
 	</div>
