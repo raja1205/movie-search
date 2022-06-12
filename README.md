@@ -7,6 +7,3 @@
 - React
 - Axios
 - OMDb API
-
-## Screenshots
-![Example screenshot](./img/screenshot.png)
