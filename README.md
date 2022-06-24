@@ -9,4 +9,4 @@
 - OMDb API
 
 ## Screenshot
-<img src="https://github.com/raja1205/assets/blob/main/img-ocr-app4.png" style="margin-bottom: 5px;" />
+<img src="https://github.com/raja1205/assets/blob/main/movie-search6.png.png" style="margin-bottom: 5px;" />
